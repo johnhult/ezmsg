@@ -1,0 +1,42 @@
+* person
+- id
+- first_name
+- last_name
+- admin
+- email
+- password
+- picture
+- creator_id (person.id)
+
+* person_online
+- person_id (person.id)
+- latest_online
+
+* group
+- id
+- name
+- creator_id (person.id)
+- color
+
+* group_person
+- group_id (group.id)
+- person_id (person.id)
+- added_by_id (person.id)
+
+* group_file
+- group_id (group.id)
+- from_person_id (person.id)
+- file_location
+- file_type
+
+* group_message
+- from_person_id (person.id)
+- to_group_id (group.id)
+- message
+
+* person_message
+- from_person_id (person.id)
+- to_person_id (person.id)
+- message
+ 
+insert into person (id, first_name, last_name, admin, email, password, picture, creator_id) values ('1e9b8d7f-7a6f-4813-b730-f216dcd07812', 'Anders', 'Levin', 1, 'foretag@gmail.com', 'apa', '7cd0d94c-903f-4fb8-8c61-4e0af0c62423', '1e9b8d7f-7a6f-4813-b730-f216dcd07812');

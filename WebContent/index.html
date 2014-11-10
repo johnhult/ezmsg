@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>EzMsg</title>
+		<link rel="stylesheet" href="css/ezmsg-fonts.css">
+		<link rel="stylesheet" href="css/ezmsg.css">
+		<link rel="stylesheet" href="css/ezmsg-colors-base.css">
+		<link rel="stylesheet" href="css/ezmsg-colors-3.css">
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular.controllers.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+				<div class="m-item color-primary-0 w2 logo"><div class="nopad">ToTalk</div></div>
+				<div class="m-item color-secondary-1-0 persons skip-2 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>
+				<div class="m-item color-secondary-2-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>
+<!-- 				<div class="m-item color-complement-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div> -->
+				<div class="m-item color-primary-3 logout"><div>Logga ut</div></div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="slider">
+				<div class="slider-tab slider-persons">
+					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+						<div class="m-item color-secondary-1-2 w7 no-square header">Inloggade just nu</div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/01.jpg", "id" : "1001"}' data-content="data-overlay"></div>
+		 				<div class="m-item profile" data-profile='{"name": "Petra Jonsson", "picture" : "p/02.jpg", "id" : "1002"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Lina Dagblad", "picture" : "p/03.jpg", "id" : "1003"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Ulla Håkansson", "picture" : "p/04.jpg", "id" : "1004"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Siv Malmkvist", "picture" : "p/05.jpg", "id" : "1005"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Nina Soldat", "picture" : "p/01.jpg", "id" : "1001"}' data-content="data-overlay"></div>
+		 				<div class="m-item profile" data-profile='{"name": "Bertulla Nilnisson", "picture" : "p/02.jpg", "id" : "1002"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Sandra Danielsson", "picture" : "p/03.jpg", "id" : "1003"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Tuva Novotny", "picture" : "p/04.jpg", "id" : "1004"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Rebecka Blid", "picture" : "p/05.jpg", "id" : "1005"}' data-content="data-overlay"></div>
+						<div class="m-item color-secondary-1-2 w7 no-square header skip-1-top">Alla personer</div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/01.jpg", "id" : "1001"}' data-content="data-overlay"></div>
+		 				<div class="m-item profile" data-profile='{"name": "Anna Nilsson Pilsson Bilsson", "picture" : "p/02.jpg", "id" : "1002"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/03.jpg", "id" : "1003"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/04.jpg", "id" : "1004"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/05.jpg", "id" : "1005"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/01.jpg", "id" : "1001"}' data-content="data-overlay"></div>
+		 				<div class="m-item profile" data-profile='{"name": "Anna Nilsson Pilsson Bilsson", "picture" : "p/02.jpg", "id" : "1002"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/03.jpg", "id" : "1003"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/04.jpg", "id" : "1004"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/05.jpg", "id" : "1005"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/01.jpg", "id" : "1001"}' data-content="data-overlay"></div>
+		 				<div class="m-item profile" data-profile='{"name": "Anna Nilsson Pilsson Bilsson", "picture" : "p/02.jpg", "id" : "1002"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/03.jpg", "id" : "1003"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/04.jpg", "id" : "1004"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/05.jpg", "id" : "1005"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/01.jpg", "id" : "1001"}' data-content="data-overlay"></div>
+		 				<div class="m-item profile" data-profile='{"name": "Anna Nilsson Pilsson Bilsson", "picture" : "p/02.jpg", "id" : "1002"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/03.jpg", "id" : "1003"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/04.jpg", "id" : "1004"}' data-content="data-overlay"></div>
+						<div class="m-item profile" data-profile='{"name": "Anna Nilsson", "picture" : "p/05.jpg", "id" : "1005"}' data-content="data-overlay"></div>
+					</div>
+				</div>				
+				<div class="slider-tab slider-groups">
+					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+						<div class="m-item color-secondary-2-2 w7 no-square header">Grupper</div>
+						<div class="m-item color-secondary-2-1 w7">
+							<div class="group nopad">Mamas Retro</div>
+						</div>
+					</div>
+				</div>
+				<div class="slider-tab slider-settings">
+					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+						<div class="m-item color-complement-2 w7 no-square header">Inställningar</div>
+					</div>
+				</div>
+			</div>
+			<div id="hover"></div>
+		</div>
+		<div class="data" id="data-overlay">
+			<div class="overlay">
+				<div class="name"></div><div class="actions">
+					<span class="action-send" data-content="data-send"></span>
+				</div>
+			</div>
+		</div>
+		<div class="data" id="data-send">
+			<div class="full-overlay">
+				<div class="send-message">
+					<div class="s-l">
+						<div class="profile-name color-primary-0"></div>
+						<div class="profile-pic"></div>
+					</div>
+					<div class="s-r">
+						<div class="toolbar"><img class="closer" src="img/icon-toolbar-close.png"></div>
+						<div class="message-area"></div>
+						<div class="text-area"></div>
+					</div> 
+				</div>
+			</div>
+		</div>
+		<script src="js/ezmsg.js"></script>
+	</body>
+</html>
