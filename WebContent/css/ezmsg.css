@@ -22,7 +22,7 @@ body {
 
 
 .content {
-	width: 956px;
+	width: 1094px;
 	margin: 0 auto;
 	overflow: hidden;
 	position: relative;
@@ -37,7 +37,7 @@ body {
 
 .content .slider .slider-tab {
 	float: left;
-	width: 976px;
+	width: 1114px;
 }
 
 .action-slide {
@@ -48,11 +48,40 @@ body {
 	display: none;
 }
 
+.round {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
 .m-item {
 	width: 128px;
-	height: 128px;
 	margin-bottom: 10px;
 	overflow: hidden;
+}
+
+.m-item.square {
+	height: 128px;
+}
+
+.m-item.profile {
+	width: 266px;
+	padding: 10px;
+}
+
+.m-item.profile img {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+}
+
+.m-item.profile h3 {
+	vertical-align: middle;
+	font-size: 1.4em;
+	display: inline-block;
+	width: calc(100% - 120px);
 }
 
 .m-item.w2 {
@@ -63,8 +92,8 @@ body {
 	width: 956px;
 }
 
-.m-item.no-square {
-	height: auto;
+.m-item.w8, .m-item.wf {
+	width: 1094px;
 }
 
 .m-item.header {
@@ -79,6 +108,10 @@ body {
 
 .m-item.skip-2 {
 	margin-left: 276px;
+}
+
+.m-item.skip-3 {
+	margin-left: 414px;
 }
 
 .m-item.skip-1-top {
@@ -173,10 +206,6 @@ body {
 	font-weight: 100;
 	padding: 10px;
 	margin: 0;
-}
-
-.m-item.profile {
-	border: 1px solid #FFF;
 }
 
 .full-overlay {

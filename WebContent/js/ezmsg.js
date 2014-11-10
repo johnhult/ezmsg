@@ -1,25 +1,3 @@
-$('.profile').off().each(function() {
-	try {
-		var $t = $(this);
-		var profile = $.parseJSON($t.attr('data-profile'));
-		var $content = $('#' + $t.attr('data-content')).clone().removeClass('data');
-		$content.find('.name').text(profile.name);
-		$t.css('background-image', 'url(' + profile.picture + ')').html($content.html());
-		var $overlay = $(this).find('.overlay');
-		var pos = $overlay.css('top');
-		$t.mouseover(function() {
-			$overlay.stop().animate({'top': '0px'}, 100);
-		});
-		$overlay.mouseout(function() {
-			$overlay.stop().animate({'top': pos}, 100);
-		});
-		$t.mouseout(function() {
-			$overlay.stop().animate({'top': pos}, 100);
-		});
-	} catch (e) {
-		console.log(e);
-	}
-});
 $('.action-send').click(function() {
 	try {
 		var $t = $(this);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ezmsg">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>EzMsg</title>
@@ -9,8 +9,10 @@
 		<link rel="stylesheet" href="css/ezmsg-colors-3.css">
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/angular.js"></script>
+		<script src="js/angular.controllers.js"></script>
 	</head>
-	<body>
+	<body ng-controller="personController">
 		<div class="content">
 			<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 				<div class="m-item square color-primary-0 w2 logo"><div class="nopad">ToTalk</div></div>
@@ -25,26 +27,8 @@
 				<div class="slider-tab slider-persons">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 						<div class="m-item color-secondary-1-2 wf header">Inloggade just nu</div>
-						<div class="m-item profile color-secondary-1-1">
-							<img class="round" src="p/01.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
-						</div>
-						<div class="m-item profile color-secondary-2-2">
-							<img class="round" src="p/02.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
-						</div>
-						<div class="m-item profile color-primary-1">
-							<img class="round" src="p/03.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
-						</div>
-						<div class="m-item profile color-complement-1">
-							<img class="round" src="p/04.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
-						</div>
-						<div class="m-item profile color-primary-1">
-							<img class="round" src="p/05.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
-						</div>
-						<div class="m-item profile color-secondary-1-1">
-							<img class="round" src="p/06.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
-						</div>
-						<div class="m-item profile color-secondary-2-2">
-							<img class="round" src="p/07.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
+						<div class="m-item profile color-secondary-1-1" ng-repeat="person in persons">
+							<img class="round" src="{{person.picture}}" alt="{{person.name}}"><h3>{{person.name}}</h3>
 						</div>
 					</div>
 				</div>				
