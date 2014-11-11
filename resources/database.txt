@@ -12,7 +12,7 @@
 - person_id (person.id)
 - latest_online
 
-* group
+* groups
 - id
 - name
 - creator_id (person.id)
@@ -39,4 +39,3 @@
 - to_person_id (person.id)
 - message
  
-insert into person (id, first_name, last_name, admin, email, password, picture, creator_id) values ('1e9b8d7f-7a6f-4813-b730-f216dcd07812', 'Anders', 'Levin', 1, 'foretag@gmail.com', 'apa', '7cd0d94c-903f-4fb8-8c61-4e0af0c62423', '1e9b8d7f-7a6f-4813-b730-f216dcd07812');
