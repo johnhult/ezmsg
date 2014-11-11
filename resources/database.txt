@@ -6,6 +6,7 @@
 - email
 - password
 - picture
+- color
 - creator_id (person.id)
 
 * person_online
