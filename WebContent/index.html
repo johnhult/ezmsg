@@ -9,60 +9,70 @@
 		<link rel="stylesheet" href="css/ezmsg-colors-3.css">
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/ezmsg.js"></script>
 	</head>
 	<body>
 		<div class="content">
 			<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
-				<div class="m-item square color-primary-0 w2 logo"><div class="nopad">ToTalk</div></div>
-				<div class="m-item square color-secondary-1-0 persons skip-3 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>
-				<div class="m-item square color-secondary-2-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>
-<!-- 				<div class="m-item square color-complement-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div> -->
-				<div class="m-item square color-primary-3 logout"><div>Logga ut</div></div>
+				<div class="m-item square color-1-0 w2 logo"><div class="fulltext">ToTalk</div></div>
+				<div class="m-item square button color-2-0 persons skip-2 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>
+				<div class="m-item square button color-3-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>
+ 				<div class="m-item square button color-4-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div>
+				<div class="m-item square button color-5-0 logout"><div>Logga ut</div></div>
 			</div>
 		</div>
 		<div class="content">
 			<div class="slider">
 				<div class="slider-tab slider-persons">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
-						<div class="m-item color-secondary-1-2 wf header">Inloggade just nu</div>
-						<div class="m-item profile color-secondary-1-1">
-							<img class="round" src="p/01.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
+						<div class="m-item color-2-1 wf header">Inloggade just nu</div>
+						<div class="m-item profile color-2-2">
+							<img class="round margin" src="p/01.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
+							<div class="message-area">
+								<div class="messages">
+									<div class="me">Hej</div>
+									<div class="them">Hej</div>
+									<div class="me">Vad gör du?</div>
+									<div class="me">Jag har tråkigt</div>
+									<div class="them">Ok, jag pillar med CSS</div>
+								</div>
+								<div class="actions">
+								</div>
+							</div>
 						</div>
-						<div class="m-item profile color-secondary-2-2">
+						<div class="m-item profile color-2-2">
 							<img class="round" src="p/02.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
 						</div>
-						<div class="m-item profile color-primary-1">
+						<div class="m-item profile color-2-2">
 							<img class="round" src="p/03.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
 						</div>
-						<div class="m-item profile color-complement-1">
+						<div class="m-item profile color-2-2">
 							<img class="round" src="p/04.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
 						</div>
-						<div class="m-item profile color-primary-1">
+						<div class="m-item profile color-2-2">
 							<img class="round" src="p/05.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
 						</div>
-						<div class="m-item profile color-secondary-1-1">
+						<div class="m-item profile color-2-2">
 							<img class="round" src="p/06.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
 						</div>
-						<div class="m-item profile color-secondary-2-2">
+						<div class="m-item profile color-2-2">
 							<img class="round" src="p/07.jpg" alt="Anna Nilsson"><h3>Anna Nilsson</h3>
 						</div>
 					</div>
 				</div>				
 				<div class="slider-tab slider-groups">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
-						<div class="m-item color-secondary-2-2 wf header">Grupper</div>
-						<div class="m-item color-secondary-2-1 wf">
-							<div class="group nopad">Mamas Retro</div>
+						<div class="m-item color-3-1 wf header">Grupper</div>
+						<div class="m-item color-3-2 wf">
+							<div class="fulltext">Mamas Retro</div>
 						</div>
 					</div>
 				</div>
-<!-- 
 				<div class="slider-tab slider-settings">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
-						<div class="m-item color-complement-2 wf header">Inställningar</div>
+						<div class="m-item color-4-1 wf header">Inställningar</div>
 					</div>
 				</div>
- -->
 			</div>
 			<div id="hover"></div>
 		</div>
@@ -70,21 +80,6 @@
 			<div class="overlay">
 				<div class="name"></div><div class="actions">
 					<span class="action-send" data-content="data-send"></span>
-				</div>
-			</div>
-		</div>
-		<div class="data" id="data-send">
-			<div class="full-overlay">
-				<div class="send-message">
-					<div class="s-l">
-						<div class="profile-name color-primary-0"></div>
-						<div class="profile-pic"></div>
-					</div>
-					<div class="s-r">
-						<div class="toolbar"><img class="closer" src="img/icon-toolbar-close.png"></div>
-						<div class="message-area"></div>
-						<div class="text-area"></div>
-					</div> 
 				</div>
 			</div>
 		</div>

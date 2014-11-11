@@ -2,7 +2,7 @@ html {
 	color: #FFF;
 }
 
-body  {
+body {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(28, 29, 29, 1.0)), color-stop(100%, rgba(28, 29, 29, 0.5)));
 	background-attachment: fixed;
 	background-size: cover;
@@ -16,9 +16,7 @@ body  {
 	background-attachment: fixed;
 	background-size: cover;
 }*/
-
 .m-item {
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/ Pgo8c3ZnIHhtbG5zPSJ…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
 	background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.2)), color-stop(100%, rgba(255, 255, 255, 0.2)));
 	background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
@@ -26,4 +24,30 @@ body  {
 	background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
 	background: linear-gradient(left, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#33ffffff', GradientType=1);
+}
+
+.btn {
+	font-size: 1em;
+	margin-right: 2em;
+	margin-top: 1em;
+	background-color: #DBE2F2;
+	border: 1px solid #C2CEE9;
+	color: #222222;
+	cursor: pointer;
+	display: inline-block;
+	line-height: 26px;
+	opacity: 0.6;
+	padding: 0.2em 1.5em;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	margin-right: 2em;
+}
+
+.btn:hover {
+	background-color: #4566A9;
+	color: #ffffff;
 }
