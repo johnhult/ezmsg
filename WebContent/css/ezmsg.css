@@ -130,6 +130,7 @@ body {
 
 .m-item.profile {
 	width: 266px;
+	cursor: pointer;
 }
 
 .m-item.profile img {
@@ -138,7 +139,6 @@ body {
 	height: 100px;
 	margin: 10px;
 	vertical-align: middle;
-	cursor: pointer;
 }
 
 .m-item.profile h3 {
@@ -186,6 +186,12 @@ body {
 
 .m-item.logout>div {
 	background-image: url(../img/icon-logout.png);
+}
+.m-item.pictures>div {
+	background-image: url(../img/icon-pictures.png);
+}
+.m-item.videos>div {
+	background-image: url(../img/icon-videos.png);
 }
 /*
  * MESSAGES

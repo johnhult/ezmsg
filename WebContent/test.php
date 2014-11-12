@@ -18,9 +18,9 @@
 		<div class="content">
 			<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 				<div class="m-item square color-1-0 w2 logo"><div class="fulltext">ToTalk</div></div>
-				<div class="m-item square button color-2-0 persons skip-2 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>
+				<div class="m-item square button color-2-0 persons skip-3 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>
 				<div class="m-item square button color-3-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>
- 				<div class="m-item square button color-4-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div>
+<!--  				<div class="m-item square button color-4-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div> -->
 				<div class="m-item square button color-5-0 logout"><div>Logga ut</div></div>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 			<div class="slider">
 				<div class="slider-tab slider-persons">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
-						<div class="m-item color-2-1 wf header">Inloggade just nu</div>
+						<div class="m-item color-2-1 wf header">Personer</div>
 <?php
 	foreach (EzMsg::getAllPersons() as $person) {
 		echo '<div class="m-item profile ' . $person['color'] . '">';
@@ -55,10 +55,14 @@
 						<div class="m-item color-3-1 wf header">Grupper</div>
 <?php
 	foreach (EzMsg::getAllGroups() as $group) {
-		$id = $group['id'];
-		echo '<div class="m-item ' . $group['color'] . ' wf">';
+		$color = $group['color'];
+		echo '<div class="m-item ' . $color . '-2 w4">';
 		echo '<div class="fulltext">' . $group['name'] . '</div>';
 		echo '</div>';
+		echo '<div class="m-item square button groups ' . $color . '-1"><div>Medlemmar</div></div>';
+		echo '<div class="m-item square button ' . $color . '-0"><div>Dokument</div></div>';
+		echo '<div class="m-item square button pictures ' . $color . '-3"><div>Bilder</div></div>';
+		echo '<div class="m-item square button videos ' . $color . '-4"><div>Filmer</div></div>';
 	}
 ?>
 					</div>
