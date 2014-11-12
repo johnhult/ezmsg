@@ -39,4 +39,6 @@
 - from_person_id (person.id)
 - to_person_id (person.id)
 - message
+- read
+
  

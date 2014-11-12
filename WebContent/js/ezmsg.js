@@ -6,10 +6,10 @@ var changing = false;
 var messageArea = '';
 
 
-$('.profile img').click(function() {
+$('.profile').click(function() {
 	if (!changing) {
 		changing = true;
-		var $t = $(this).parent();
+		var $t = $(this);
 		if (!$t.hasClass('maximized')) {
 			$t.attr('data-orgwidth', $t.outerWidth());
 			$t.attr('data-orgheight', $t.outerHeight());
