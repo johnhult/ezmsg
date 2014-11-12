@@ -1,0 +1,14 @@
+TODO
+
+Personer:
+- Se till att få bort hacket när man förstorar personrutor.
+- När man förstorar en personruta ska man "följa med ner" så man ser "skrivdelen".
+
+Grupper:
+- Fixa färger i dummygrupperna.
+- Dropdown till samtliga buttons.
+
+Allmänt:
+- Login
+- Första sida?
+- BAKGRUND!
