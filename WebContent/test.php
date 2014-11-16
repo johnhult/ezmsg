@@ -4,11 +4,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>EzMsg</title>
 		<link rel="stylesheet" href="css/ezmsg-fonts.css">
-		<link rel="stylesheet" href="css/ezmsg.css">
+		<link rel="stylesheet" href="css/badge.css">
 		<link rel="stylesheet" href="css/ezmsg-colors-base.css">
 		<link rel="stylesheet" href="css/ezmsg-colors-3.css">
-		<script src="js/jquery-1.10.2.min.js"></script>
-		<script src="js/masonry.pkgd.min.js"></script>
+		<link rel="stylesheet" href="css/ezmsg.css">
+		<script src="resources/jquery-1.10.2.min.js"></script>
+		<script src="resources/masonry.pkgd.min.js"></script>
 		<script src="js/ezmsg.js"></script>
 	</head>
 <?php
@@ -31,7 +32,7 @@
 						<div class="m-item color-2-1 wf header">Personer</div>
 <?php
 	foreach (EzMsg::getAllPersons() as $person) {
-		echo '<div class="m-item profile ' . $person['color'] . '">';
+		echo '<div class="m-item profile ' . $person['color'] . '" id="p-' . $person['id'] . '">';
 		echo '<img class="round margin" src="p/' . $person['picture'] . '" alt="' . $person['name'] . '"><h3>' . $person['name'] . '</h3>';
 ?>
 							<div class="message-area">
@@ -56,13 +57,15 @@
 <?php
 	foreach (EzMsg::getAllGroups() as $group) {
 		$color = $group['color'];
-		echo '<div class="m-item ' . $color . '-2 w4">';
+		$id = $group['id'];
+		echo '<div class="m-item ' . $color . '-3 w4">';
 		echo '<div class="fulltext">' . $group['name'] . '</div>';
 		echo '</div>';
-		echo '<div class="m-item square button groups ' . $color . '-1"><div>Medlemmar</div></div>';
-		echo '<div class="m-item square button ' . $color . '-0"><div>Dokument</div></div>';
-		echo '<div class="m-item square button pictures ' . $color . '-3"><div>Bilder</div></div>';
-		echo '<div class="m-item square button videos ' . $color . '-4"><div>Filmer</div></div>';
+		echo '<div class="m-item square button members ' . $color . '-2" data-id="g-' . $id . '"><div>Medlemmar</div></div>';
+		echo '<div class="m-item square button documents ' . $color . '-2" data-id="g-' . $id . '"><div>Dokument</div></div>';
+		echo '<div class="m-item square button pictures ' . $color . '-2" data-id="g-' . $id . '"><div>Bilder</div></div>';
+		echo '<div class="m-item square button videos ' . $color . '-2" data-id="g-' . $id . '"><div>Filmer</div></div>';
+		echo '<div class="m-item skip-2 w6 h0 data ' . $color . '-2 g-' . $id . '"></div>';
 	}
 ?>
 					</div>
