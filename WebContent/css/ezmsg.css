@@ -30,16 +30,29 @@ body {
 	position: relative;
 }
 
-.content .slider {
+.content>.slider {
 	position: relative;
 	top: 0px;
 	left: 0px;
 	width: 10000px;
 }
 
-.content .slider .slider-tab {
+.content>.slider .slider-tab {
 	float: left;
 	width: 1114px;
+}
+
+.m-item>.slider {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 10000px;
+}
+
+.m-item>.slider .slider-tab {
+	float: left;
+	width: 818px;
+	padding: 10px;
 }
 
 .data {
@@ -51,6 +64,7 @@ body {
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 }
+
 .margin {
 	margin: 10px;
 }
@@ -120,6 +134,12 @@ body {
 	padding: 10px;
 	margin: 0;
 }
+.m-item>.slider .header {
+	font-size: 1.2em;
+	font-weight: 400;
+	padding: 10px;
+	background: url(../img/o-000000-0.3.png);
+}
 /*
  * MASONRY OVERRIDE
  */
@@ -153,12 +173,12 @@ body {
 	vertical-align: middle;
 	font-size: 1.4em;
 	display: inline-block;
-	width: calc(100% - 124px);
+	width: calc(100% -   124px);
 }
 
 .m-item.profile .message-area {
 	font-size: 1.1em;
-	height: calc(100% - 120px);
+	height: calc(100% -   120px);
 	display: none;
 	background: url(../img/o-FFFFFF-0.5.png);
 	color: #000;
@@ -179,7 +199,7 @@ body {
 	letter-spacing: 10px;
 }
 
-.m-item.groups>div, .m-item.members>div {
+.m-item.groups>div,.m-item.members>div {
 	background-image: url(../img/icon-groups.png);
 }
 
@@ -194,12 +214,15 @@ body {
 .m-item.logout>div {
 	background-image: url(../img/icon-logout.png);
 }
+
 .m-item.pictures>div {
 	background-image: url(../img/icon-pictures.png);
 }
+
 .m-item.videos>div {
 	background-image: url(../img/icon-videos.png);
 }
+
 .m-item.documents>div {
 	background-image: url(../img/icon-documents.png);
 }

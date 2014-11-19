@@ -66,6 +66,23 @@
 		echo '<div class="m-item square button pictures ' . $color . '-2" data-id="g-' . $id . '"><div>Bilder</div></div>';
 		echo '<div class="m-item square button videos ' . $color . '-2" data-id="g-' . $id . '"><div>Filmer</div></div>';
 		echo '<div class="m-item skip-2 w6 h0 data ' . $color . '-2 g-' . $id . '"></div>';
+?>
+							<div class="slider">
+								<div class="slider-tab slider-members">
+									<div class="header">Medlemmar</div>
+								</div>
+								<div class="slider-tab slider-documents">
+									<div class="header">Dokument</div>
+								</div>
+								<div class="slider-tab slider-pictures">
+									<div class="header">Bilder</div>
+								</div>
+								<div class="slider-tab slider-videos">
+									<div class="header">Filmer</div>
+								</div>
+							</div>
+						</div>
+<?php
 	}
 ?>
 					</div>
