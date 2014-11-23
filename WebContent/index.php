@@ -14,6 +14,7 @@
 	</head>
 <?php
 	include('inc_ezmsg.php');
+	include('inc_output.php');
 ?>
 	<body>
 		<div class="content">
@@ -31,26 +32,12 @@
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 						<div class="m-item color-2-1 wf header">Personer</div>
 <?php
-	foreach (EzMsg::getAllPersons() as $person) {
-		echo '<div class="m-item profile ' . $person['color'] . '" id="p-' . $person['id'] . '">';
-		echo '<img class="round margin" src="p/' . $person['picture'] . '" alt="' . $person['name'] . '"><h3>' . $person['name'] . '</h3>';
-?>
-							<div class="message-area">
-								<div class="messages">
-									<div class="me">Hej</div>
-									<div class="them">Hej</div>
-									<div class="me">Vad gör du?</div>
-									<div class="me">Jag har tråkigt</div>
-									<div class="them">Ok, jag pillar med CSS</div>
-								</div>
-							</div>
-<?php
-		echo '</div>';
+	foreach (EzMsg::getAllPersons(null) as $person) {
+		printPerson($person);
 	}
 ?>
-						
 					</div>
-				</div>				
+				</div>
 				<div class="slider-tab slider-groups">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 						<div class="m-item color-3-1 wf header">Grupper</div>
@@ -61,28 +48,17 @@
 		echo '<div class="m-item ' . $color . '-3 w4">';
 		echo '<div class="fulltext">' . $group['name'] . '</div>';
 		echo '</div>';
-		echo '<div class="m-item square button members ' . $color . '-2" data-id="g-' . $id . '"><div>Medlemmar</div></div>';
-		echo '<div class="m-item square button documents ' . $color . '-2" data-id="g-' . $id . '"><div>Dokument</div></div>';
-		echo '<div class="m-item square button pictures ' . $color . '-2" data-id="g-' . $id . '"><div>Bilder</div></div>';
-		echo '<div class="m-item square button videos ' . $color . '-2" data-id="g-' . $id . '"><div>Filmer</div></div>';
-		echo '<div class="m-item skip-2 w6 h0 data ' . $color . '-2 g-' . $id . '"></div>';
-?>
-							<div class="slider">
-								<div class="slider-tab slider-members">
-									<div class="header">Medlemmar</div>
-								</div>
-								<div class="slider-tab slider-documents">
-									<div class="header">Dokument</div>
-								</div>
-								<div class="slider-tab slider-pictures">
-									<div class="header">Bilder</div>
-								</div>
-								<div class="slider-tab slider-videos">
-									<div class="header">Filmer</div>
-								</div>
-							</div>
-						</div>
-<?php
+		echo '<div class="m-item square button members ' . $color . '-2" data-id="g-' . $id . '" data-slide-id="slider-members-' . $id . '"><div>Medlemmar</div></div>';
+		echo '<div class="m-item square button documents ' . $color . '-2" data-id="g-' . $id . '" data-slide-id="slider-documents-' . $id . '"><div>Dokument</div></div>';
+		echo '<div class="m-item square button pictures ' . $color . '-2" data-id="g-' . $id . '" data-slide-id="slider-pictures-' . $id . '"><div>Bilder</div></div>';
+		echo '<div class="m-item square button videos ' . $color . '-2" data-id="g-' . $id . '" data-slide-id="slider-videos-' . $id . '"><div>Filmer</div></div>';
+		echo '<div class="m-item skip-2 w6 h0 scroll-y data ' . $color . '-2 g-' . $id . '">';
+		echo '<div class="slider">';
+		echo '<div class="slider-tab slider-members-' . $id . ' lazy-loading" data-contentUrl="content.php?content=members&groupId=' . $id . '"><div class="header">Medlemmar</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-documents-' . $id . ' lazy-loading" data-contentUrl="content.php?content=documents&groupId=' . $id . '"><div class="header">Dokument</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-pictures-' . $id . ' lazy-loading" data-contentUrl="content.php?content=pictures&groupId=' . $id . '"><div class="header">Bilder</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-videos-' . $id . ' lazy-loading" data-contentUrl="content.php?content=videos&groupId=' . $id . '"><div class="header">Filmer</div><div class="loader-target"></div></div>';
+		echo '</div></div>';
 	}
 ?>
 					</div>

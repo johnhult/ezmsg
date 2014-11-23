@@ -68,6 +68,21 @@ body {
 .margin {
 	margin: 10px;
 }
+
+.loader {
+	background: url(../img/o-000000-0.5.png);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin: 10px auto;
+	padding: 10px 10px 7px 10px;
+	width: 68px;
+}
+
+.loader-target {
+	margin-left: -10px;
+}
+
 /*
  * MASONRY GENERAL
  */
@@ -226,6 +241,18 @@ body {
 .m-item.documents>div {
 	background-image: url(../img/icon-documents.png);
 }
+
+.scroll-y {
+	overflow-y: scroll !important;
+}
+
+.loader-target > .profile {
+	width: 259px;
+	display: inline-block;
+	margin: 10px 0 0 10px;
+	cursor: auto;
+}
+
 /*
  * MESSAGES
  */
@@ -241,6 +268,7 @@ body {
 /*
  * EFFECTS
  */
+  
 .m-item .overlay {
 	width: 100%;
 	height: 100%;
@@ -273,3 +301,21 @@ body {
 	outline: none;
 	border: #35a5e5 1px solid;
 }
+
+/*
+ * BOXES
+ */
+.info,.success,.error,.warning,.tip,.secure,.message,.download,.purchase,.print{margin:20px 50px; padding:10px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+.info h4,.success h4,.error h4,.warning h4,.tip h4,.secure h4,.message h4,.download h4,.purchase h4,.print h4 { margin:5px 5px 5px 80px;padding:0; font-size:1.4em;}
+.info p,.success p,.error p,.warning p,.tip p,.secure p,.message p,.download p,.purchase p,.print p { font-size:1.2em; color:#000; margin:5px 5px 5px 80px; }
+.info{border:1px solid #0e7fad;color:#0e7fad;background:#c0e9fa url('../img/info-info.png') no-repeat; background-position:30px 20px;}
+.success{border:1px solid #4f8746;color:#4f8746;background:#d4ffcd url('../img/info-success.png') no-repeat; background-position:30px 20px;}
+.error{border:1px solid #641f1a;color:#641f1a;background:#ffd2d4 url('../img/info-error.png') no-repeat; background-position:30px 20px;}
+.warning{border:1px solid #9d9c49;color:#9d9c49;background:#fdfdcb url('../img/info-warning.png') no-repeat; background-position:30px 20px;}
+.tip{border:1px solid #c77d10;color:#c77d10;background:#f9d69e url('../img/info-tip.png') no-repeat; background-position:30px 20px;}
+.secure{border:1px solid #9638f1;color:#9638f1;background:#e5cefc url('../img/info-secure.png') no-repeat; background-position:30px 20px;}
+.message{border:1px solid #000;color:#000;background:#efefef url('../img/info-message.png') no-repeat; background-position:30px 20px;}
+.download{border:1px solid #04b5eb;color:#04b5eb;background:#f7f7f7 url('../img/info-download.png') no-repeat; background-position:30px 20px;}
+.purchase{border:1px solid #426164;color:#426164;background:#c2e1e3 url('../img/info-purchase.png') no-repeat; background-position:30px 20px;}
+.print{border:1px solid #3c4b5e;color:#3c4b5e;background:#c8d9e3 url('../img/info-print.png') no-repeat; background-position:30px 20px;}
+ 

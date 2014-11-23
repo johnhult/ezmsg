@@ -20,17 +20,24 @@ class EzMsg {
 		}
 		$stmt->close();
 		$con->close();
-			
+
 		return $result;
 	}
 
-	public static function getAllPersons() {
+	public static function getAllPersons($groupId) {
 
 		$result = array();
 		$con = Db::connect();
 
-		$sql = 'select id, concat(first_name, " ", last_name), color, picture from person order by first_name asc, last_name asc';
+		if (isset($groupId)) {
+			$sql = 'select p.id, concat(p.first_name, " ", p.last_name), p.color, p.picture from person p, group_person gp where gp.person_id = p.id and gp.group_id = ? order by first_name asc, last_name asc';
+		} else {
+			$sql = 'select id, concat(first_name, " ", last_name), color, picture from person order by first_name asc, last_name asc';
+		}
 		$stmt = $con->prepare($sql);
+		if (isset($groupId)) {
+			$stmt->bind_param("s", $groupId);
+		}
 		$stmt->execute();
 		$stmt->bind_result($id, $name, $color, $picture);
 		$stmt->store_result();
@@ -39,7 +46,7 @@ class EzMsg {
 		}
 		$stmt->close();
 		$con->close();
-			
+
 		return $result;
 	}
 }

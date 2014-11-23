@@ -3,50 +3,15 @@ var profileExpandsOverRows = 4;
 var profileExpandsOverCols = 2;
 var animationInterval = 200;
 var scrollInterval = 600;
-var messageArea = '';
+var loader = '<div class="loader"><img src="img/loader.gif"></div>';
+var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
 
 var changing = false;
 var counter = 1;
 
-(function($) {
-	$.fn.badge = function(badgeText) {
-		var $badge = this.find('.the-badge');
-		if ($badge.length == 0 && badgeText) {
-			$badge = this.append('<div class="outer-badge" id="b-' + this.attr('id') + '"><div class="inner-badge"><p class="the-badge number">' + badgeText + '</p></div></div>');
-		} else if (badgeText) {
-			$badge.text(badgeText);
-		} else {
-			$badge.remove();
-		}
-	};
-})(jQuery);
-
 $('.action-slide').click(function() {
 	slide($(this));
 });
-
-function slide($t) {
-	var $content = $('.' + $t.attr('data-slide-id'));
-	if ($content.length > 0) {
-		if ($content.position().left != $content.parent().position().left) {
-			$content.parent().stop().animate({
-				'left' : -$content.position().left + 'px'
-			});
-			return true;
-		}
-	}
-	return false;
-}
-
-function finishTransformation($t, scroll) {
-	$t.closest('.js-masonry').masonry();
-	if (scroll) {
-		$('html, body').animate({
-			scrollTop : $t.offset().top
-		}, scrollInterval);
-	}
-	changing = false;
-}
 
 $('.profile').click(function() {
 	if (!changing) {
@@ -95,3 +60,55 @@ $('.members, .documents, .pictures, .videos').click(function() {
 		}
 	}
 });
+
+(function($) {
+	$.fn.badge = function(badgeText) {
+		var $badge = this.find('.the-badge');
+		if ($badge.length == 0 && badgeText) {
+			$badge = this.append('<div class="outer-badge" id="b-' + this.attr('id') + '"><div class="inner-badge"><p class="the-badge number">' + badgeText + '</p></div></div>');
+		} else if (badgeText) {
+			$badge.text(badgeText);
+		} else {
+			$badge.remove();
+		}
+	};
+})(jQuery);
+
+function slide($t) {
+	var $content = $('.' + $t.attr('data-slide-id'));
+	if ($content.length > 0) {
+		if ($content.hasClass('lazy-loading')) {
+			lazyLoad($content);
+		}
+		if ($content.position().left != $content.parent().position().left) {
+			$content.parent().stop().animate({
+				'left' : -$content.position().left + 'px'
+			});
+			return true;
+		}
+	}
+	return false;
+}
+
+function finishTransformation($t, scroll) {
+	$t.closest('.js-masonry').masonry();
+	if (scroll) {
+		$('html, body').animate({
+			scrollTop : $t.offset().top
+		}, scrollInterval);
+	}
+	changing = false;
+}
+
+function lazyLoad($container) {
+	
+	$container.removeClass('lazy-loading');
+	var $target = $container.find('.loader-target').html(loader);
+	var contentUrl = $container.attr('data-contentUrl');
+	$.get(contentUrl, function(data) {
+		  $target.html(data);
+	}).fail(function() {
+		$target.html(error);
+		$target.find('p').text('Gick inte att hämta data från ' + contentUrl);
+	});
+}
