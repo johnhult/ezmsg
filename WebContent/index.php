@@ -1,3 +1,9 @@
+<?php
+	include('inc_userhandling.php');
+	if(!isset($uid)) {
+		die();
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>

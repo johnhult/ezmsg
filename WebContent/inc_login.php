@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>EzMsg</title>
+		<title>T o T a l k - Logga in</title>
 		<link rel="stylesheet" href="css/ezmsg-fonts.css">
 		<link rel="stylesheet" href="css/ezmsg-colors-base.css">
 		<link rel="stylesheet" href="css/login.css">
@@ -11,7 +11,7 @@
 		<div class="login-container">
 			<form action="index.php" method="post" class="login">
 			    <h1>ToTalk</h1>
-			    <input type="email" name="email" class="login-input" placeholder="E-postadress" autofocus="">
+			    <input type="email" name="username" class="login-input" placeholder="E-postadress" autofocus="">
 			    <input type="password" name="password" class="login-input" placeholder="Lösenord">
 			    <input type="submit" value="Logga in" class="login-submit">
 			    <p class="login-help"><a href="#">Glömt lösenord?</a></p>

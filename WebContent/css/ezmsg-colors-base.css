@@ -9,10 +9,10 @@ html {
 }*/
 
 body {
-	background-image: url(../img/background07.jpg);
+	background-image: url(../img/bg01.jpg);
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	background-color: #000000;
+	background-color: #292931;
 	background-attachment: fixed;
 	background-size: cover;
 }

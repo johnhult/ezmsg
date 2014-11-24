@@ -7,7 +7,6 @@ var loader = '<div class="loader"><img src="img/loader.gif"></div>';
 var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
 
 var changing = false;
-var counter = 1;
 
 $('.action-slide').click(function() {
 	slide($(this));
@@ -37,7 +36,6 @@ $('.profile').click(function() {
 				finishTransformation($t);
 			});
 		}
-		$t.badge(counter++);
 	}
 });
 
@@ -60,6 +58,10 @@ $('.members, .documents, .pictures, .videos').click(function() {
 		}
 	}
 });
+
+$('.logout').click(function() {
+	window.location = 'index.php?logout=true';
+})
 
 (function($) {
 	$.fn.badge = function(badgeText) {
