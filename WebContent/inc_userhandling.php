@@ -1,12 +1,16 @@
 <?php
 	session_start();
 	$uid = $_SESSION['uid'];
+	$isAdmin = $_SESSION['isAdmin'];
 	if (!isset($uid)) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		if ($username == 'foretag@gmail.com' && $password == 'pass123') {
-			$uid = 'apa';
-			$_SESSION['uid'] = 'apa';
+		$user = EzMsg::getUserInformation($username, $password);
+		if (isset($user)) {
+			$uid = $user['id'];
+			$isAdmin = $user['admin'];
+			$_SESSION['uid'] = $uid;
+			$_SESSION['isAdmin'] = $isAdmin;
 		} else {
 			include('inc_login.php');
 			die();
