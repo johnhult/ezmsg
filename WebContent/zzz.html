@@ -1,21 +1,274 @@
+
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>EzMsg</title>
-		<link rel="stylesheet" href="css/ezmsg-fonts.css">
-		<link rel="stylesheet" href="css/ezmsg-colors-base.css">
-		<link rel="stylesheet" href="css/login.css">
-	</head>
-	<body>
-		<div class="login-container">
-			<form action="index.php" method="post" class="login">
-			    <h1>ToTalk</h1>
-			    <input type="email" name="email" class="login-input" placeholder="E-postadress" autofocus="">
-			    <input type="password" name="password" class="login-input" placeholder="Lösenord">
-			    <input type="submit" value="Logga in" class="login-submit">
-			    <p class="login-help"><a href="#">Glömt lösenord?</a></p>
-			  </form>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ForMessage</title>
+<link rel="stylesheet" href="css/ezmsg-fonts.css">
+<link rel="stylesheet" href="css/badge.css">
+<link rel="stylesheet" href="css/ezmsg-colors-base.css">
+<link rel="stylesheet" href="css/ezmsg-colors-3.css">
+<link rel="stylesheet" href="css/ezmsg.css">
+<script src="resources/jquery-1.10.2.min.js"></script>
+<script src="resources/masonry.pkgd.min.js"></script>
+<script src="js/ezmsg.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+			<div class="m-item square color-1-0 w2 logo">
+				<div class="fulltext">ForMsg</div>
+			</div>
+			<div class="m-item square button color-2-0 persons skip-3 action-slide" data-slide-id="slider-persons">
+				<div>Personer</div>
+			</div>
+			<div class="m-item square button color-3-0 groups action-slide" data-slide-id="slider-groups">
+				<div>Grupper</div>
+			</div>
+			<!--  				<div class="m-item square button color-4-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div> -->
+			<div class="m-item square button color-5-0 logout">
+				<div>Logga ut</div>
+			</div>
 		</div>
-	</body>
+	</div>
+	<div class="content">
+		<div class="slider">
+			<div class="slider-tab slider-persons">
+				<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+					<div class="m-item color-2-3 wf header header-persons">
+						Personer
+						<form class="form-wrapper cf">
+							<input type="text" placeholder="Sök personer..." required class="contracting-search-field search-default">
+							<button type="submit">Rensa</button>
+						</form>
+					</div>
+					<div class="m-item profile color-1-2" id="p-a450278e-241e-4206-b3cf-ace05911a7da">
+						<div class="clickTarget">
+						<img class="round margin" src="p/3f6fb455-27a3-4edb-8d25-5009050d4467.jpg" alt="An-Cii Hult">
+						<h3>An-Cii Hult</h3>
+						</div>
+					</div>
+					<div class="m-item profile color-3-2" id="p-64ce7298-5330-497b-80c8-24613d970517">
+						<img class="round margin" src="p/1a76a869-2bea-4d3a-8cc1-167838b16751.jpg" alt="Ann-Louise Slotthag">
+						<h3>Ann-Louise Slotthag</h3>
+					</div>
+					<div class="m-item profile color-3-2" id="p-7413379e-66e2-4748-a0a5-8432d54ec380">
+						<img class="round margin" src="p/f3bc271f-5248-43d7-bcfb-cc2fadc77442.jpg" alt="Bea Alger">
+						<h3>Bea Alger</h3>
+					</div>
+					<div class="m-item profile color-5-2" id="p-9765862e-268a-4465-a238-3c7b7373d438">
+						<img class="round margin" src="p/00b0ac4c-19df-48fb-bcdb-37871c68152a.jpg" alt="Catrin Schultz">
+						<h3>Catrin Schultz</h3>
+					</div>
+					<div class="m-item profile color-2-2" id="p-30212293-442e-46e1-ad41-f341d7d0a809">
+						<img class="round margin" src="p/0d50f162-9da5-46fc-a6aa-7e7b13196b47.jpg" alt="Elisabeth Silverplats">
+						<h3>Elisabeth Silverplats</h3>
+					</div>
+					<div class="m-item profile color-4-2" id="p-282d21c6-696d-45fa-a8ab-f1abcf8615e1">
+						<img class="round margin" src="p/default01.jpg" alt="Erika Gustafsson">
+						<h3>Erika Gustafsson</h3>
+					</div>
+					<div class="m-item profile color-1-2" id="p-74e7da80-51df-4aca-a1c5-ffefaa8a5347">
+						<img class="round margin" src="p/ceddb0f6-cd6a-4320-a087-c70ba1a3664f.jpg" alt="Johanna Friberg">
+						<h3>Johanna Friberg</h3>
+					</div>
+					<div class="m-item profile color-2-2" id="p-c0911e78-be7a-478b-8aae-c7994d71aa14">
+						<img class="round margin" src="p/default02.jpg" alt="Jos Rossling">
+						<h3>Jos Rossling</h3>
+					</div>
+					<div class="m-item profile color-3-2" id="p-162fbea2-a0bf-4744-9716-2f265eddbeab">
+						<img class="round margin" src="p/1e95aaea-f5b2-44bc-a2bd-294d4be11f54.jpg" alt="Linnea Thoor">
+						<h3>Linnea Thoor</h3>
+					</div>
+					<div class="m-item profile color-1-2" id="p-49c66b88-4bc2-411b-a34a-58adff48ed2c">
+						<img class="round margin" src="p/default03.jpg" alt="Mia Bobzow">
+						<h3>Mia Bobzow</h3>
+					</div>
+					<div class="m-item profile color-5-2" id="p-d94d9bf3-b082-417f-949a-3283c025f64d">
+						<img class="round margin" src="p/default04.jpg" alt="Paulina Hammarstrand">
+						<h3>Paulina Hammarstrand</h3>
+					</div>
+					<div class="m-item profile color-3-2" id="p-5b1504f6-5dc0-4539-9881-d850f4d59ae5">
+						<img class="round margin" src="p/cd7dcba3-af2c-4461-bf5b-9e00ea324081.jpg" alt="Sabina Tanbäck">
+						<h3>Sabina Tanbäck</h3>
+					</div>
+					<div class="m-item profile color-5-2" id="p-a096b041-96ac-49c9-a6db-ad28f499eb91">
+						<img class="round margin" src="p/969e3102-d695-47c1-a59f-fcac5d57c871.jpg" alt="Sheila Silvestre">
+						<h3>Sheila Silvestre</h3>
+					</div>
+					<div class="m-item profile color-2-2" id="p-0d2e1b1e-2298-4d6d-810c-70ab83fbd647">
+						<img class="round margin" src="p/default05.jpg" alt="Ulrica Wänman">
+						<h3>Ulrica Wänman</h3>
+					</div>
+				</div>
+			</div>
+			<div class="slider-tab slider-groups">
+				<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+					<div class="m-item color-3-3 wf header header-groups">
+						Grupper
+						<form class="form-wrapper cf">
+							<input type="text" placeholder="Sök grupper..." required class="contracting-search-field search-default">
+							<button type="submit">Rensa</button>
+						</form>
+					</div>
+					<div class="m-item color-4-3 w4">
+						<div class="fulltext">forumSKILL</div>
+					</div>
+					<div class="m-item square button members color-4-2" data-id="g-7d85aa49-de7d-49a5-b253-41ca07fe7089" data-slide-id="slider-members-7d85aa49-de7d-49a5-b253-41ca07fe7089">
+						<div>Medlemmar</div>
+					</div>
+					<div class="m-item square button documents color-4-2" data-id="g-7d85aa49-de7d-49a5-b253-41ca07fe7089" data-slide-id="slider-documents-7d85aa49-de7d-49a5-b253-41ca07fe7089">
+						<div>Dokument</div>
+					</div>
+					<div class="m-item square button pictures color-4-2" data-id="g-7d85aa49-de7d-49a5-b253-41ca07fe7089" data-slide-id="slider-pictures-7d85aa49-de7d-49a5-b253-41ca07fe7089">
+						<div>Bilder</div>
+					</div>
+					<div class="m-item square button videos color-4-2" data-id="g-7d85aa49-de7d-49a5-b253-41ca07fe7089" data-slide-id="slider-videos-7d85aa49-de7d-49a5-b253-41ca07fe7089">
+						<div>Filmer</div>
+					</div>
+					<div class="m-item wf h0 scroll-y data color-4-2 g-7d85aa49-de7d-49a5-b253-41ca07fe7089">
+						<div class="slider">
+							<div class="slider-tab slider-members-7d85aa49-de7d-49a5-b253-41ca07fe7089 lazy-loading" data-contentUrl="content.php?content=members&groupId=7d85aa49-de7d-49a5-b253-41ca07fe7089">
+								<div class="header">Medlemmar</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-documents-7d85aa49-de7d-49a5-b253-41ca07fe7089 lazy-loading" data-contentUrl="content.php?content=documents&groupId=7d85aa49-de7d-49a5-b253-41ca07fe7089">
+								<div class="header">Dokument</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-pictures-7d85aa49-de7d-49a5-b253-41ca07fe7089 lazy-loading" data-contentUrl="content.php?content=pictures&groupId=7d85aa49-de7d-49a5-b253-41ca07fe7089">
+								<div class="header">Bilder</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-videos-7d85aa49-de7d-49a5-b253-41ca07fe7089 lazy-loading" data-contentUrl="content.php?content=videos&groupId=7d85aa49-de7d-49a5-b253-41ca07fe7089">
+								<div class="header">Filmer</div>
+								<div class="loader-target"></div>
+							</div>
+						</div>
+					</div>
+					<div class="m-item color-1-3 w4">
+						<div class="fulltext">Mamas Retro Centrum</div>
+					</div>
+					<div class="m-item square button members color-1-2" data-id="g-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec" data-slide-id="slider-members-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+						<div>Medlemmar</div>
+					</div>
+					<div class="m-item square button documents color-1-2" data-id="g-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec" data-slide-id="slider-documents-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+						<div>Dokument</div>
+					</div>
+					<div class="m-item square button pictures color-1-2" data-id="g-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec" data-slide-id="slider-pictures-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+						<div>Bilder</div>
+					</div>
+					<div class="m-item square button videos color-1-2" data-id="g-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec" data-slide-id="slider-videos-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+						<div>Filmer</div>
+					</div>
+					<div class="m-item wf h0 scroll-y data color-1-2 g-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+						<div class="slider">
+							<div class="slider-tab slider-members-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec lazy-loading" data-contentUrl="content.php?content=members&groupId=49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+								<div class="header">Medlemmar</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-documents-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec lazy-loading" data-contentUrl="content.php?content=documents&groupId=49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+								<div class="header">Dokument</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-pictures-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec lazy-loading" data-contentUrl="content.php?content=pictures&groupId=49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+								<div class="header">Bilder</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-videos-49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec lazy-loading" data-contentUrl="content.php?content=videos&groupId=49e6f2b3-b6c5-447c-8f79-e3baa07fa9ec">
+								<div class="header">Filmer</div>
+								<div class="loader-target"></div>
+							</div>
+						</div>
+					</div>
+					<div class="m-item color-5-3 w4">
+						<div class="fulltext">Mamas Retro Gårdsten</div>
+					</div>
+					<div class="m-item square button members color-5-2" data-id="g-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb" data-slide-id="slider-members-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+						<div>Medlemmar</div>
+					</div>
+					<div class="m-item square button documents color-5-2" data-id="g-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb" data-slide-id="slider-documents-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+						<div>Dokument</div>
+					</div>
+					<div class="m-item square button pictures color-5-2" data-id="g-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb" data-slide-id="slider-pictures-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+						<div>Bilder</div>
+					</div>
+					<div class="m-item square button videos color-5-2" data-id="g-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb" data-slide-id="slider-videos-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+						<div>Filmer</div>
+					</div>
+					<div class="m-item wf h0 scroll-y data color-5-2 g-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+						<div class="slider">
+							<div class="slider-tab slider-members-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb lazy-loading" data-contentUrl="content.php?content=members&groupId=29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+								<div class="header">Medlemmar</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-documents-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb lazy-loading" data-contentUrl="content.php?content=documents&groupId=29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+								<div class="header">Dokument</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-pictures-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb lazy-loading" data-contentUrl="content.php?content=pictures&groupId=29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+								<div class="header">Bilder</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-videos-29d08eb6-a3ad-49b4-8f88-0b88c519f4bb lazy-loading" data-contentUrl="content.php?content=videos&groupId=29d08eb6-a3ad-49b4-8f88-0b88c519f4bb">
+								<div class="header">Filmer</div>
+								<div class="loader-target"></div>
+							</div>
+						</div>
+					</div>
+					<div class="m-item color-2-3 w4">
+						<div class="fulltext">Norma</div>
+					</div>
+					<div class="m-item square button members color-2-2" data-id="g-a5141cd1-4009-4db6-a853-9eebe97c26c5" data-slide-id="slider-members-a5141cd1-4009-4db6-a853-9eebe97c26c5">
+						<div>Medlemmar</div>
+					</div>
+					<div class="m-item square button documents color-2-2" data-id="g-a5141cd1-4009-4db6-a853-9eebe97c26c5" data-slide-id="slider-documents-a5141cd1-4009-4db6-a853-9eebe97c26c5">
+						<div>Dokument</div>
+					</div>
+					<div class="m-item square button pictures color-2-2" data-id="g-a5141cd1-4009-4db6-a853-9eebe97c26c5" data-slide-id="slider-pictures-a5141cd1-4009-4db6-a853-9eebe97c26c5">
+						<div>Bilder</div>
+					</div>
+					<div class="m-item square button videos color-2-2" data-id="g-a5141cd1-4009-4db6-a853-9eebe97c26c5" data-slide-id="slider-videos-a5141cd1-4009-4db6-a853-9eebe97c26c5">
+						<div>Filmer</div>
+					</div>
+					<div class="m-item wf h0 scroll-y data color-2-2 g-a5141cd1-4009-4db6-a853-9eebe97c26c5">
+						<div class="slider">
+							<div class="slider-tab slider-members-a5141cd1-4009-4db6-a853-9eebe97c26c5 lazy-loading" data-contentUrl="content.php?content=members&groupId=a5141cd1-4009-4db6-a853-9eebe97c26c5">
+								<div class="header">Medlemmar</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-documents-a5141cd1-4009-4db6-a853-9eebe97c26c5 lazy-loading" data-contentUrl="content.php?content=documents&groupId=a5141cd1-4009-4db6-a853-9eebe97c26c5">
+								<div class="header">Dokument</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-pictures-a5141cd1-4009-4db6-a853-9eebe97c26c5 lazy-loading" data-contentUrl="content.php?content=pictures&groupId=a5141cd1-4009-4db6-a853-9eebe97c26c5">
+								<div class="header">Bilder</div>
+								<div class="loader-target"></div>
+							</div>
+							<div class="slider-tab slider-videos-a5141cd1-4009-4db6-a853-9eebe97c26c5 lazy-loading" data-contentUrl="content.php?content=videos&groupId=a5141cd1-4009-4db6-a853-9eebe97c26c5">
+								<div class="header">Filmer</div>
+								<div class="loader-target"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slider-tab slider-settings">
+				<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
+					<div class="m-item color-4-1 wf header">Inställningar</div>
+				</div>
+			</div>
+		</div>
+		<div id="hover"></div>
+	</div>
+	<div class="data" id="data-overlay">
+		<div class="overlay">
+			<div class="name"></div>
+			<div class="actions">
+				<span class="action-send" data-content="data-send"></span>
+			</div>
+		</div>
+	</div>
+	<script src="js/ezmsg.js"></script>
+</body>
 </html>

@@ -4,9 +4,10 @@ CREATE TABLE person (
 	last_name varchar(31),
 	admin int,
 	email varchar(127),
-	password vasrchar(31),
+	password varchar(31),
 	picture varchar(127),
-	creator_id varchar(36)
+	creator_id varchar(36),
+	color varchar(31)
 );
 
 CREATE TABLE person_online (

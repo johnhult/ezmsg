@@ -5,6 +5,7 @@ var animationInterval = 200;
 var scrollInterval = 600;
 var loader = '<div class="loader"><img src="img/loader.gif"></div>';
 var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
+var messageArea = '<div class="message-area"><div class="messages">      <div class="me">Hejdu</div><div class="them">Men hej på dig!</div><div class="them">Det var verkligen länge sedan</div><div class="me">Inte tillräckligt</div>    </div><div class="send-area"><div class="text-area"><textarea></textarea></div><div class="send-button"></div></div></div>';
 
 var changing = false;
 
@@ -12,10 +13,10 @@ $('.action-slide').click(function() {
 	slide($(this));
 });
 
-$('.profile').click(function() {
+$('.profile .clickTarget').click(function() {
 	if (!changing) {
 		changing = true;
-		var $t = $(this);
+		var $t = $(this).parent();
 		if (!$t.hasClass('maximized')) {
 			$t.attr('data-orgwidth', $t.outerWidth());
 			$t.attr('data-orgheight', $t.outerHeight());
@@ -27,7 +28,8 @@ $('.profile').click(function() {
 			}, animationInterval, function() {
 				finishTransformation($t, true);
 			});
-			$t.append(messageArea).find('.message-area,.message-send-area').show();
+			var colorClass = $t.attr("class").match(/color[\w-]*\b/);
+			$t.append(messageArea).find('.message-area').css('display', 'table').find('.send-button').addClass(colorClass[0]);
 		} else {
 			$t.removeClass('maximized').animate({
 				'width' : $t.attr('data-orgwidth') + 'px',
@@ -61,7 +63,16 @@ $('.members, .documents, .pictures, .videos').click(function() {
 
 $('.logout').click(function() {
 	window.location = 'index.php?logout=true';
-})
+});
+
+$('.contracting-search-field').keyup(function() {
+	var $t = $(this);
+	if ($t.val().length > 0) {
+		$t.removeClass('search-default').addClass('search-edited').next().show();
+	} else {
+		$t.removeClass('search-edited').addClass('search-default').next().hide();
+	}
+});
 
 (function($) {
 	$.fn.badge = function(badgeText) {

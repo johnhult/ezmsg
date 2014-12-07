@@ -5,7 +5,9 @@
 	$content = $_GET['content'];
 	try {
 		if ($content == 'members') {
-			getMembersForGroup ();
+			getMembersForGroup();
+		} else if ($content == 'messages') {
+			getMessagesForUser();
 		}
 	} catch (Exception $e) {
 		echo '<div class="error"><h4>Ett fel har uppstått:</h4><p>' . $e->getMessage() . '</p></div>';
@@ -14,11 +16,20 @@
 	function getMembersForGroup() {
 		$groupId = $_GET ['groupId'];
 		if (isset($groupId)) {
-			foreach (EzMsg::getAllPersons ($groupId) as $person) {
+			foreach (EzMsg::getAllPersons($groupId) as $person) {
 				printPerson($person);
 			}
 		} else {
 			throw new Exception('Anrop till hämta medlemmar i grupp var felaktigt');
+		}
+	}
+
+	function getMessagesForUser() {
+		$userId = $_GET ['userId'];
+		$uid = $_SESSION['uid'];
+		if (isset($userId)) {
+		} else {
+			throw new Exception('Anrop till hämta meddelanden var felaktigt');
 		}
 	}
 ?>
