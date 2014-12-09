@@ -51,17 +51,17 @@ class EzMsg {
 	}
 
 	function getUserInformation($email, $password) {
-	
+
 		$con = Db::connect();
-	
-		$sql = 'select id, admin from person where email = ? and password = ?';
+
+		$sql = 'select id, admin, picture from person where email = ? and password = ?';
 		$stmt = $con->prepare($sql);
 		$stmt->bind_param('ss', $email, $password);
 		$stmt->execute();
-		$stmt->bind_result($id, $admin);
+		$stmt->bind_result($id, $admin, $picture);
 		$stmt->store_result();
 		if ($stmt->fetch()) {
-			$result = array('id' => $id, 'admin' => ($admin == '1' ? true : false));
+			$result = array('id' => $id, 'admin' => ($admin == '1' ? true : false), 'picture' => $picture);
 		}
 		$stmt->close();
 		$con->close();

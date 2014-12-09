@@ -5,7 +5,10 @@ var animationInterval = 200;
 var scrollInterval = 600;
 var loader = '<div class="loader"><img src="img/loader.gif"></div>';
 var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
-var messageArea = '<div class="message-area"><div class="messages">      <div class="me">Hejdu</div><div class="them">Men hej på dig!</div><div class="them">Det var verkligen länge sedan</div><div class="me">Inte tillräckligt</div>    </div><div class="send-area"><div class="text-area"><textarea></textarea></div><div class="send-button"></div></div></div>';
+
+var messageAreaOld = '<div class="message-area"><div class="messages">      <div class="me">Hejdu</div><div class="them">Men hej på dig!</div><div class="them">Det var verkligen länge sedan</div><div class="me">Inte tillräckligt</div>    </div><div class="send-area"><div class="me"><div class="round"></div></div><div class="text-area"><textarea></textarea></div><div class="send-button round"><div></div></div></div></div>';
+
+var messageArea = '<div class="message-area"><div class="messages"></div></div><div class="send-area"></div>';
 
 var changing = false;
 
@@ -28,8 +31,8 @@ $('.profile .clickTarget').click(function() {
 			}, animationInterval, function() {
 				finishTransformation($t, true);
 			});
-			var colorClass = $t.attr("class").match(/color[\w-]*\b/);
-			$t.append(messageArea).find('.message-area').css('display', 'table').find('.send-button').addClass(colorClass[0]);
+//			var colorClass = $t.attr("class").match(/color[\w-]*\b/);
+			loadMessages($t.append(messageArea).find('.message-area').show());
 		} else {
 			$t.removeClass('maximized').animate({
 				'width' : $t.attr('data-orgwidth') + 'px',
@@ -40,6 +43,14 @@ $('.profile .clickTarget').click(function() {
 		}
 	}
 });
+
+function loadMessages($messageArea) {
+	
+	var messages = '<div><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">An-Cii Hult<span class="time">2014-12-19 20:02</span></div> Så att jag tycker en massa grejer Så att jag tycker en massa grejer Så att jag tycker en massa grejer Så att jag tycker en massa grejer Så att jag tycker en massa grejer Så att jag tycker en massa grejer Så att jag tycker en massa grejer Så att jag tycker en massa grejer </div>';
+	$messageArea.find('.messages').html(messages);
+	
+	
+}
 
 $('.members, .documents, .pictures, .videos').click(function() {
 	if (!changing) {

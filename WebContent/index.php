@@ -17,18 +17,25 @@
 		<script src="resources/jquery-1.10.2.min.js"></script>
 		<script src="resources/masonry.pkgd.min.js"></script>
 		<script src="js/ezmsg.js"></script>
+		<style>.me .profile { background-image: url(p/<?php echo $picture; ?>);}</style>
 	</head>
 <?php
-	include('inc_ezmsg.php');
 	include('inc_output.php');
 ?>
 	<body>
 		<div class="content">
 			<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 				<div class="m-item square color-1-0 w2 logo"><div class="fulltext">ForMsg</div></div>
-				<div class="m-item square button color-2-0 persons skip-3 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>
-				<div class="m-item square button color-3-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>
-<!--  				<div class="m-item square button color-4-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div> -->
+<?php
+	if ($isAdmin) {
+		echo '<div class="m-item square button color-2-0 persons skip-2 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>';
+		echo '<div class="m-item square button color-3-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>';
+		echo '<div class="m-item square button color-4-0 settings action-slide" data-slide-id="slider-settings"><div>Inställningar</div></div>';
+	} else {
+		echo '<div class="m-item square button color-2-0 persons skip-3 action-slide" data-slide-id="slider-persons"><div>Personer</div></div>';
+		echo '<div class="m-item square button color-3-0 groups action-slide" data-slide-id="slider-groups"><div>Grupper</div></div>';
+	}
+?>
 				<div class="m-item square button color-5-0 logout"><div>Logga ut</div></div>
 			</div>
 		</div>
@@ -39,7 +46,9 @@
 						<div class="m-item color-2-3 wf header header-persons">Personer<form class="form-wrapper cf"><input type="text" placeholder="Sök personer..." required class="contracting-search-field search-default"><button type="reset">Rensa</button></form></div>
 <?php
 	foreach (EzMsg::getAllPersons(null) as $person) {
-		printPerson($person);
+		if ($person['id'] != $uid) {
+			printPerson($person);
+		}
 	}
 ?>
 					</div>
@@ -69,11 +78,17 @@
 ?>
 					</div>
 				</div>
+<?php
+	if ($isAdmin) {
+?>
 				<div class="slider-tab slider-settings">
 					<div class="js-masonry" data-masonry-options='{ "columnWidth": 128, "itemSelector": ".m-item", "gutter": 10 }'>
 						<div class="m-item color-4-3 wf header">Inställningar</div>
 					</div>
 				</div>
+<?php
+	}
+?>
 			</div>
 			<div id="hover"></div>
 		</div>

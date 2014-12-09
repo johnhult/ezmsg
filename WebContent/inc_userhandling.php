@@ -1,7 +1,7 @@
 <?php
+	include('inc_ezmsg.php');
 	session_start();
-	$uid = $_SESSION['uid'];
-	$isAdmin = $_SESSION['isAdmin'];
+	$uid = $_SESSION['user.uid'];
 	if (!isset($uid)) {
 		$username = $_POST['username'];
 		$password = $_POST['password'];
@@ -9,8 +9,10 @@
 		if (isset($user)) {
 			$uid = $user['id'];
 			$isAdmin = $user['admin'];
-			$_SESSION['uid'] = $uid;
-			$_SESSION['isAdmin'] = $isAdmin;
+			$picture = $user['picture'];
+			$_SESSION['user.uid'] = $uid;
+			$_SESSION['user.admin'] = $isAdmin;
+			$_SESSION['user.picture'] = $picture;
 		} else {
 			include('inc_login.php');
 			die();
@@ -21,6 +23,9 @@
 			unset($uid);
 			header('Location: index.php');
 			die();
+		} else {
+			$isAdmin = $_SESSION['user.admin'];
+			$picture = $_SESSION['user.picture'];
 		}
 	}
 ?>
