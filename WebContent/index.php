@@ -17,7 +17,9 @@
 		<script src="resources/jquery-1.10.2.min.js"></script>
 		<script src="resources/masonry.pkgd.min.js"></script>
 		<script src="js/ezmsg.js"></script>
-		<style>.me .profile { background-image: url(p/<?php echo $picture; ?>);}</style>
+<?php
+	echo '<style>.me .profile { background-image: url(p/' . $picture . ');}</style>';
+?>
 	</head>
 <?php
 	include('inc_output.php');
@@ -48,6 +50,7 @@
 	foreach (EzMsg::getAllPersons(null) as $person) {
 		if ($person['id'] != $uid) {
 			printPerson($person);
+			echo '<style>.p-' . $person['id'] . ' { background-image: url(p/' . $person['picture'] . ');}</style>';
 		}
 	}
 ?>

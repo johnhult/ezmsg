@@ -270,7 +270,6 @@ body {
 	display: none;
 	background: url(../img/o-FFFFFF-0.5.png);
 	color: #000;
-	border-top: 1px solid #999;
 	width: 100%;
 }
 
@@ -281,7 +280,7 @@ body {
 }
 
 .message-area .messages > div {
-	padding-top: 10px;
+	padding-top: 20px;
 }
 
 .message-area .messages > div > div {
@@ -289,6 +288,7 @@ body {
 }
 
 .message-area .messages .me,.message-area .messages .them {
+	background-repeat: no-repeat;
 	width: 42px;
 	height: 32px;
 }
@@ -301,13 +301,19 @@ body {
 
 .message-area .messages .me {
 	background-image: url(../img/arrow-left.png);
-	background-repeat: no-repeat;
 	background-position: right 10px;
+}
+
+.message-area .messages .them {
+	background-image: url(../img/arrow-right.png);
+	background-position: left 10px;
+	padding-left: 10px;
 }
 
 .message-area .messages .text {
 	width: calc(100% - 52px);
 	background-color: #FFF;
+	color: #666;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -317,6 +323,7 @@ body {
 .message-area .messages .text .name {
 	font-weight: 700;
 	margin-bottom: 5px;
+	color: #000;
 }
 
 .message-area .messages .text .name .time {
