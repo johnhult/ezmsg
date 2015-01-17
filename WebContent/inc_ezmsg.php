@@ -74,14 +74,14 @@ class EzMsg {
 		$result = array();
 		$con = Db::connect();
 
-		$sql = 'select m.from_person_id, m.message, m.time from message m where m.from_person_id in (?, ?) and m.to_person_id in (?, ?) order by time';
+		$sql = 'select * from (select m.from_person_id, m.message, m.time, m.counter from message m where m.from_person_id in (?, ?) and m.to_person_id in (?, ?) order by counter desc limit 10) as the_table order by counter asc';
 		$stmt = $con->prepare($sql);
 		$stmt->bind_param('ssss', $fromUser, $toUser, $fromUser, $toUser);
 		$stmt->execute();
-		$stmt->bind_result($from, $message, $time);
+		$stmt->bind_result($from, $message, $time, $counter);
 		$stmt->store_result();
 		while ($stmt->fetch()) {
-			$result[] = array('from' => $from, 'message' => $message, 'time' => $time);
+			$result[] = array('from' => $from, 'message' => $message, 'time' => $time, 'counter' => $counter);
 		}
 		$stmt->close();
 		$con->close();

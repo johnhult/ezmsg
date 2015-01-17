@@ -145,17 +145,17 @@ function loadMessages($messageArea, uid, name) {
 	var $target = $messageArea.find('.messages');
 	var contentUrl = 'load_messages.php?toUser=' + uid;
 	handleGet($target, contentUrl, function(data) {
-		console.log(data);
 		var messages = $.parseJSON(data);
 		var html = "";
 		$.each(messages, function(index, message) {
 			if (message.from == uid) {
-				html += '<div><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
+				html += '<div data-counter=' + message.counter + '><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
 			} else {
-				html += getMessageFromMe(message.message, message.time);
+				html += getMessageFromMe(message.message, message.time, message.counter);
 			}
 		});
 		$target.html(html);
+		$target.scrollTop($target[0].scrollHeight);
 	});
 }
 
@@ -163,8 +163,8 @@ function format(time) {
 	return time.substring(8,10) + '/' + time.substring(5,7) + ' ' + time.substring(0,4) + ' ' + time.substring(11,13) + ':' + time.substring(14,16);
 }
 
-function getMessageFromMe(message, time) {
-	return '<div><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">Jag<span class="time">' + format(time) + '</span></div>' + message + '</div><br style="clear: both;"/></div>';
+function getMessageFromMe(message, time, counter) {
+	return '<div data-counter=' + counter + '><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">Jag<span class="time">' + format(time) + '</span></div>' + message + '</div><br style="clear: both;"/></div>';
 }
 
 function sendMessage($textArea, uid) {
@@ -173,7 +173,7 @@ function sendMessage($textArea, uid) {
 	if (text.length > 0) {
 		handlePost('put_message.php', 'uid=' + uid + '&message=' + text);
 		var $messages = $textArea.closest('.message-area').find('.messages'); 
-		$messages.append(getMessageFromMe(text, new Date().toLocaleString())).animate({ 'scrollTop': $messages[0].scrollHeight });
+		$messages.append(getMessageFromMe(text, new Date().toLocaleString(), -1)).animate({ 'scrollTop': $messages[0].scrollHeight });
 	}
 }
 

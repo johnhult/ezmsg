@@ -11,7 +11,7 @@
 			if ($addComma) {
 				echo ',';
 			}
-			echo '{"from":"' . $message['from'] . '", "time":"' . $message['time'] . '", "message":' . json_encode($message['message']) . '}';
+			echo '{"from":"' . $message['from'] . '", "time":"' . $message['time'] . '", "counter": "' . $message['counter'] . '", "message":' . json_encode($message['message']) . '}';
 			$addComma = true;
 		}
 		echo ']';
