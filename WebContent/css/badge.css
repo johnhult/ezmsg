@@ -12,8 +12,8 @@
 	float: left;
 	position: absolute;
 	z-index: 10000;
-	right: 10px;
-	top: 10px;
+	left: 76px;
+	top: 5px;
 }
 
 .inner-badge {

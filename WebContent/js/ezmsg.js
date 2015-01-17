@@ -3,11 +3,11 @@ var profileExpandsOverRows = 4;
 var profileExpandsOverCols = 2;
 var animationInterval = 200;
 var scrollInterval = 600;
+var messageReloadInterval = 5 * 1000;
 var loader = '<div class="loader"><img src="img/loader.gif"></div>';
 var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
 var sendArea = '<div class="send-area"><textarea></textarea><div class="send-button"></div></div>';
 var messageArea = '<div class="message-area"><div class="messages"></div>' + sendArea + '</div>';
-
 
 var changing = false;
 
@@ -30,7 +30,6 @@ $('.profile .clickTarget').click(function() {
 			}, animationInterval, function() {
 				finishTransformation($t, true);
 			});
-//			var colorClass = $t.attr("class").match(/color[\w-]*\b/);
 			if (!$t.hasClass('loaded')) {
 				$t.addClass('loaded');
 				var uid = $t.attr('data-id');
@@ -145,22 +144,48 @@ function loadMessages($messageArea, uid, name) {
 	var $target = $messageArea.find('.messages');
 	var contentUrl = 'load_messages.php?toUser=' + uid;
 	handleGet($target, contentUrl, function(data) {
-		var messages = $.parseJSON(data);
-		var html = "";
-		$.each(messages, function(index, message) {
-			if (message.from == uid) {
-				html += '<div data-counter=' + message.counter + '><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
-			} else {
-				html += getMessageFromMe(message.message, message.time, message.counter);
-			}
-		});
-		$target.html(html);
-		$target.scrollTop($target[0].scrollHeight);
+		scrollToBottom($target.html(createHtmlForContent(data, uid, name)), true);
+		setTimeout(function() {
+			loadLatestMessages($messageArea, uid, name);
+		}, messageReloadInterval);
 	});
+}
+
+function loadLatestMessages($messageArea, uid, name) {
+	
+//	var $target = $messageArea.find('.messages');
+//	$($target.children().get().reverse()).each(function() {
+//		
+//	});
+//	var contentUrl = 'load_messages.php?toUser=' + uid + "&lastMessage=";
+//	alert(contentUrl);
+//	handleGet($target, contentUrl, function(data) {
+//		scrollToBottom($target.append(createHtmlForContent(data, uid, name)));
+//	});
+//	setTimeout(function() {
+//		loadLatestMessages($messageArea, uid, name);
+//	}, messageReloadInterval);
+}
+
+function checkForNewMessages() {
+	
 }
 
 function format(time) {
 	return time.substring(8,10) + '/' + time.substring(5,7) + ' ' + time.substring(0,4) + ' ' + time.substring(11,13) + ':' + time.substring(14,16);
+}
+
+function createHtmlForContent(data, uid, name) {
+	var messages = $.parseJSON(data);
+	var html = "";
+	$.each(messages, function(index, message) {
+		if (message.from == uid) {
+			html += '<div data-counter=' + message.counter + '><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
+		} else {
+			html += getMessageFromMe(message.message, message.time, message.counter);
+		}
+	});
+	return html;
 }
 
 function getMessageFromMe(message, time, counter) {
@@ -173,7 +198,15 @@ function sendMessage($textArea, uid) {
 	if (text.length > 0) {
 		handlePost('put_message.php', 'uid=' + uid + '&message=' + text);
 		var $messages = $textArea.closest('.message-area').find('.messages'); 
-		$messages.append(getMessageFromMe(text, new Date().toLocaleString(), -1)).animate({ 'scrollTop': $messages[0].scrollHeight });
+		scrollToBottom($messages.append(getMessageFromMe(text, new Date().toLocaleString(), -1)));
+	}
+}
+
+function scrollToBottom($target, instant) {
+	if (instant) {
+		$target.scrollTop($target[0].scrollHeight);
+	} else {
+		$target.animate({ 'scrollTop': $target[0].scrollHeight });
 	}
 }
 

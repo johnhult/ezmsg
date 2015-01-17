@@ -5,18 +5,32 @@
 		die();
 	}
 	$toUser = $_GET['toUser'];
+	$lastMessage = $_GET['lastMessage'];
+	$newMessages = $_GET['newMessages'];
 	if(isset($toUser)) {
 		echo '[';
-		foreach (EzMsg::getMessagesForUser($uid, $toUser) as $message) {
+		if(isset($lastMessage)) {
+
+		} else {
+			foreach (EzMsg::getMessagesForUser($uid, $toUser) as $message) {
+				if ($addComma) {
+					echo ',';
+				}
+				echo '{"from":"' . $message['from'] . '", "time":"' . $message['time'] . '", "counter": "' . $message['counter'] . '", "message":' . json_encode($message['message']) . '}';
+				$addComma = true;
+			}
+		}
+		echo ']';
+	} else if (isset($newMessages)) {
+		echo '[';
+		foreach (EzMsg::getUnreadMessageFor($uid) as $message) {
 			if ($addComma) {
 				echo ',';
 			}
-			echo '{"from":"' . $message['from'] . '", "time":"' . $message['time'] . '", "counter": "' . $message['counter'] . '", "message":' . json_encode($message['message']) . '}';
+			echo '{"from":"' . $message['from'] . '", "counter":"' . $message['counter'] . '"}';
 			$addComma = true;
 		}
 		echo ']';
-	} else {
-		throw new Exception('Anrop till meddelanden var felaktigt');
 	}
 ?>
 
