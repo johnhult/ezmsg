@@ -5,7 +5,9 @@ var animationInterval = 200;
 var scrollInterval = 600;
 var loader = '<div class="loader"><img src="img/loader.gif"></div>';
 var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
-var messageArea = '<div class="message-area"><div class="messages"></div></div><div class="send-area"></div>';
+var sendArea = '<div class="send-area"><textarea></textarea><div class="send-button"></div></div>';
+var messageArea = '<div class="message-area"><div class="messages"></div>' + sendArea + '</div>';
+
 
 var changing = false;
 

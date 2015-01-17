@@ -268,7 +268,6 @@ body {
 	font-size: 1.1em;
 	height: calc(100% - 120px);
 	display: none;
-	background: url(../img/o-FFFFFF-0.5.png);
 	color: #000;
 	width: 100%;
 }
@@ -277,6 +276,8 @@ body {
 	overflow: scroll;
 	height: calc(100% - 64px);
 	padding-left: 10px;
+	background: url(../img/o-FFFFFF-0.5.png);
+	padding-bottom: 10px;
 }
 
 .message-area .messages > div {
@@ -333,6 +334,27 @@ body {
 
 .message-area .send-area {
 	height: 64px;
+}
+
+.message-area .send-area textarea {
+	height: 100%;
+	width: calc(100% - 64px);
+	resize: both;
+	outline: none;
+	padding: 5px;
+	font-size: 1em;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+.message-area .send-area .send-button {
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	background: url(../img/icon-message.png) no-repeat 50% 50%;
+	cursor: pointer;
 }
 
 /*
