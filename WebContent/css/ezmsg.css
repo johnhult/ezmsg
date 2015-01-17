@@ -300,12 +300,12 @@ body {
 	background-size: 32px;
 }
 
-.message-area .messages .me {
+.message-area .messages .them {
 	background-image: url(../img/arrow-left.png);
 	background-position: right 10px;
 }
 
-.message-area .messages .them {
+.message-area .messages .me {
 	background-image: url(../img/arrow-right.png);
 	background-position: left 10px;
 	padding-left: 10px;

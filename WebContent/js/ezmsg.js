@@ -180,7 +180,7 @@ function createHtmlForContent(data, uid, name) {
 	var html = "";
 	$.each(messages, function(index, message) {
 		if (message.from == uid) {
-			html += '<div data-counter=' + message.counter + '><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
+			html += '<div data-counter=' + message.counter + '><div class="them"><div class="round profile p-' + message.from + '"></div></div><div class="text"><div class="name">' + name + '<span class="time">' + format(message.time) + '</span></div>' + message.message + '</div><br style="clear: both;" /></div>';
 		} else {
 			html += getMessageFromMe(message.message, message.time, message.counter);
 		}
@@ -189,7 +189,7 @@ function createHtmlForContent(data, uid, name) {
 }
 
 function getMessageFromMe(message, time, counter) {
-	return '<div data-counter=' + counter + '><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">Jag<span class="time">' + format(time) + '</span></div>' + message + '</div><br style="clear: both;"/></div>';
+	return '<div data-counter=' + counter + '><div class="text"><div class="name">Jag<span class="time">' + format(time) + '</span></div>' + message + '</div><div class="me"><div class="round profile"></div></div><br style="clear: both;"/></div>';
 }
 
 function sendMessage($textArea, uid) {
