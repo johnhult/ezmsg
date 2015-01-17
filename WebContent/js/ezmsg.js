@@ -153,18 +153,32 @@ function loadMessages($messageArea, uid, name) {
 
 function loadLatestMessages($messageArea, uid, name) {
 	
-//	var $target = $messageArea.find('.messages');
-//	$($target.children().get().reverse()).each(function() {
-//		
-//	});
-//	var contentUrl = 'load_messages.php?toUser=' + uid + "&lastMessage=";
-//	alert(contentUrl);
-//	handleGet($target, contentUrl, function(data) {
-//		scrollToBottom($target.append(createHtmlForContent(data, uid, name)));
-//	});
-//	setTimeout(function() {
-//		loadLatestMessages($messageArea, uid, name);
-//	}, messageReloadInterval);
+	var $target = $messageArea.find('.messages');
+	var counter = -1;
+	$($target.children().get().reverse()).each(function() {
+		counter = $(this).attr('data-counter');
+		if (counter != -1) {
+			return false;
+		}
+	});
+	var contentUrl = 'load_messages.php?toUser=' + uid + (counter != -1 ? "&lastMessage=" + counter : "");
+	handleGet($target, contentUrl, function(data) {
+		data = $.trim(data);
+		if (data.length > 0) {
+			var html = createHtmlForContent(data, uid, name);
+			$($target.children().get().reverse()).each(function() {
+				if ($(this).attr('data-counter') == -1) {
+					$(this).remove();
+				} else {
+					return false;
+				}
+			});
+			scrollToBottom($target.append(html));
+		}
+	});
+	setTimeout(function() {
+		loadLatestMessages($messageArea, uid, name);
+	}, messageReloadInterval);
 }
 
 function checkForNewMessages() {

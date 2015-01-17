@@ -9,19 +9,16 @@
 	$newMessages = $_GET['newMessages'];
 	if(isset($toUser)) {
 		echo '[';
-		if(isset($lastMessage)) {
-
-		} else {
-			foreach (EzMsg::getMessagesForUser($uid, $toUser) as $message) {
-				if ($addComma) {
-					echo ',';
-				}
-				echo '{"from":"' . $message['from'] . '", "time":"' . $message['time'] . '", "counter": "' . $message['counter'] . '", "message":' . json_encode($message['message']) . '}';
-				$addComma = true;
+		foreach (EzMsg::getMessagesForUser($uid, $toUser, $lastMessage) as $message) {
+			if ($addComma) {
+				echo ',';
 			}
+			echo '{"from":"' . $message['from'] . '", "time":"' . $message['time'] . '", "counter": "' . $message['counter'] . '", "message":' . json_encode($message['message']) . '}';
+			$addComma = true;
 		}
 		echo ']';
 	} else if (isset($newMessages)) {
+		echo 'hå';
 		echo '[';
 		foreach (EzMsg::getUnreadMessageFor($uid) as $message) {
 			if ($addComma) {

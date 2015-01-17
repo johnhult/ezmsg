@@ -2,18 +2,13 @@ TODO
 
 Personer:
 - Se till att få bort hacket när man förstorar personrutor.
-- När man förstorar en personruta ska man "följa med ner" så man ser "skrivdelen".
+- Kontrollen för nya meddelanden ska köras för alla användare och inte en tråd per användare
+- Få ordning på att visa nya olästa meddelanden (ikon) (och ladda alla olästa när man öppnar användaren)
+- Kontrollen för nya meddelanden slutar när användaren är stängd
+- Markera meddelanden som lästa
+- Escape stänger det fönster man är i just nu
+- Fokus på textruta när man öppnar en person
 
-Grupper:
-- Fixa färger i dummygrupperna.
-- Dropdown till samtliga buttons.
 
 Allmänt:
-- Login
-- Första sida?
 - BAKGRUND!
-
-
-PICS:
-- Chatbubbla, vita kanter.
-- Bakgrund.

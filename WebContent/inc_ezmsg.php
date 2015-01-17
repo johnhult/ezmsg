@@ -69,14 +69,22 @@ class EzMsg {
 		return $result;
 	}
 
-	public static function getMessagesForUser($fromUser, $toUser) {
+	public static function getMessagesForUser($fromUser, $toUser, $lastMessage) {
 
 		$result = array();
 		$con = Db::connect();
 
-		$sql = 'select * from (select m.from_person_id, m.message, m.time, m.counter from message m where m.from_person_id in (?, ?) and m.to_person_id in (?, ?) order by counter desc limit 10) as the_table order by counter asc';
+		if (isset($lastMessage)) {
+			$sql = 'select m.from_person_id, m.message, m.time, m.counter from message m where m.counter > ? and m.from_person_id in (?, ?) and m.to_person_id in (?, ?) order by counter asc';
+		} else {
+			$sql = 'select * from (select m.from_person_id, m.message, m.time, m.counter from message m where m.from_person_id in (?, ?) and m.to_person_id in (?, ?) order by counter desc limit 10) as the_table order by counter asc';
+		}
 		$stmt = $con->prepare($sql);
-		$stmt->bind_param('ssss', $fromUser, $toUser, $fromUser, $toUser);
+		if (isset($lastMessage)) {
+			$stmt->bind_param('issss', $lastMessage, $fromUser, $toUser, $fromUser, $toUser);
+		} else {
+			$stmt->bind_param('ssss', $fromUser, $toUser, $fromUser, $toUser);
+		}
 		$stmt->execute();
 		$stmt->bind_result($from, $message, $time, $counter);
 		$stmt->store_result();
