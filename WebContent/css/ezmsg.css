@@ -319,6 +319,7 @@ body {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	padding: 10px;
+	white-space: pre;
 }
 
 .message-area .messages .text .name {

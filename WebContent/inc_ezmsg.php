@@ -88,5 +88,18 @@ class EzMsg {
 
 		return $result;
 	}
+
+	public static function newMessageForUser($fromUser, $toUser, $message) {
+
+		$result = array();
+		$con = Db::connect();
+
+		$sql = 'insert into message (from_person_id, to_person_id, message) values (?, ?, ?)';
+		$stmt = $con->prepare($sql);
+		$stmt->bind_param('sss', $fromUser, $toUser, $message);
+		$stmt->execute();
+		$stmt->close();
+		$con->close();
+	}
 }
 ?>
