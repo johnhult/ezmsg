@@ -50,7 +50,7 @@ class EzMsg {
 		return $result;
 	}
 
-	function getUserInformation($email, $password) {
+	public static function getUserInformation($email, $password) {
 
 		$con = Db::connect();
 
@@ -88,7 +88,7 @@ class EzMsg {
 
 		return $result;
 	}
-	
+
 	public static function getUnreadMessageFor($toUser) {
 
 		$result = array();
