@@ -88,6 +88,26 @@ class EzMsg {
 
 		return $result;
 	}
+	
+	public static function getUnreadMessageFor($toUser) {
+
+		$result = array();
+		$con = Db::connect();
+
+		$sql = 'select m.from_person_id, count(m.from_person_id) from message m where m.read = 0 and m.to_person_id = (?) group by m.from_person_id';
+		$stmt = $con->prepare($sql);
+		$stmt->bind_param('s', $toUser);
+		$stmt->execute();
+		$stmt->bind_result($from, $counter);
+		$stmt->store_result();
+		while ($stmt->fetch()) {
+			$result[] = array('from' => $from, 'counter' => $counter);
+		}
+		$stmt->close();
+		$con->close();
+
+		return $result;
+	}
 
 	public static function newMessageForUser($fromUser, $toUser, $message) {
 
