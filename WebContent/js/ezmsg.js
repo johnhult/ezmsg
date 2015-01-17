@@ -5,7 +5,9 @@ var animationInterval = 200;
 var scrollInterval = 600;
 var loader = '<div class="loader"><img src="img/loader.gif"></div>';
 var error = '<div class="error"><h4>Ett fel har uppstått:</h4><p></p></div>';
-var messageArea = '<div class="message-area"><div class="messages"></div></div><div class="send-area"></div>';
+var sendArea = '<div class="send-area"><textarea></textarea><div class="send-button"></div></div>';
+var messageArea = '<div class="message-area"><div class="messages"></div>' + sendArea + '</div>';
+
 
 var changing = false;
 
@@ -29,7 +31,22 @@ $('.profile .clickTarget').click(function() {
 				finishTransformation($t, true);
 			});
 //			var colorClass = $t.attr("class").match(/color[\w-]*\b/);
-			loadMessages($t.append(messageArea).find('.message-area').show(), $t.attr('data-id'), $t.find('h3').text());
+			if (!$t.hasClass('loaded')) {
+				$t.addClass('loaded');
+				var uid = $t.attr('data-id');
+				loadMessages($t.append(messageArea).find('.message-area').show(), uid, $t.find('h3').text());
+				$t.find('.send-button').click(function() {
+					sendMessage($(this).parent().find('textarea'), uid);
+				});
+				$t.find('textarea').keyup(function(e) {
+					if (e.which == 13 && !e.shiftKey) {
+						if ($.trim($(this).val()).length > 0) {
+							sendMessage($(this), uid);
+							return false;
+						}
+					}
+				});
+			}
 		} else {
 			$t.removeClass('maximized').animate({
 				'width' : $t.attr('data-orgwidth') + 'px',
@@ -132,13 +149,32 @@ function loadMessages($messageArea, uid, name) {
 		var html = "";
 		$.each(messages, function(index, message) {
 			if (message.from == uid) {
-				html += '<div><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
+				html += '<div data-counter=' + message.counter + '><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
 			} else {
-				html += '<div><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">Jag<span class="time">' + message.time + '</span></div>' + message.message + '</div><br style="clear: both;"/></div>';
+				html += getMessageFromMe(message.message, message.time, message.counter);
 			}
 		});
 		$target.html(html);
+		$target.scrollTop($target[0].scrollHeight);
 	});
+}
+
+function format(time) {
+	return time.substring(8,10) + '/' + time.substring(5,7) + ' ' + time.substring(0,4) + ' ' + time.substring(11,13) + ':' + time.substring(14,16);
+}
+
+function getMessageFromMe(message, time, counter) {
+	return '<div data-counter=' + counter + '><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">Jag<span class="time">' + format(time) + '</span></div>' + message + '</div><br style="clear: both;"/></div>';
+}
+
+function sendMessage($textArea, uid) {
+	var text = $.trim($textArea.val());
+	$textArea.val('');
+	if (text.length > 0) {
+		handlePost('put_message.php', 'uid=' + uid + '&message=' + text);
+		var $messages = $textArea.closest('.message-area').find('.messages'); 
+		$messages.append(getMessageFromMe(text, new Date().toLocaleString(), -1)).animate({ 'scrollTop': $messages[0].scrollHeight });
+	}
 }
 
 function handleGet($target, contentUrl, onOk) {
@@ -150,3 +186,13 @@ function handleGet($target, contentUrl, onOk) {
 	});
 }
 
+function handlePost(url, params) {
+	
+    $.post(url, params, function(data) {
+    	if ($.trim(data).length > 0) {
+        	console.log('FEL: Skicka meddelande data = ' + data);
+    	}
+    }).fail(function(xhr, textStatus, errorThrown) {
+    	console.log('FEL: Skicka meddelande = ' + errorThrown);
+    });
+}
