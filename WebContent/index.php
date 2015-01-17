@@ -72,10 +72,10 @@
 		echo '<div class="m-item square button videos ' . $color . '-2" data-id="g-' . $id . '" data-slide-id="slider-videos-' . $id . '"><div>Filmer</div></div>';
 		echo '<div class="m-item wf h0 scroll-y data ' . $color . '-2 g-' . $id . '">';
 		echo '<div class="slider">';
-		echo '<div class="slider-tab slider-members-' . $id . ' lazy-loading" data-contentUrl="content.php?content=members&groupId=' . $id . '"><div class="header">Medlemmar</div><div class="loader-target"></div></div>';
-		echo '<div class="slider-tab slider-documents-' . $id . ' lazy-loading" data-contentUrl="content.php?content=documents&groupId=' . $id . '"><div class="header">Dokument</div><div class="loader-target"></div></div>';
-		echo '<div class="slider-tab slider-pictures-' . $id . ' lazy-loading" data-contentUrl="content.php?content=pictures&groupId=' . $id . '"><div class="header">Bilder</div><div class="loader-target"></div></div>';
-		echo '<div class="slider-tab slider-videos-' . $id . ' lazy-loading" data-contentUrl="content.php?content=videos&groupId=' . $id . '"><div class="header">Filmer</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-members-' . $id . ' lazy-loading" data-contentUrl="load_content.php?content=members&groupId=' . $id . '"><div class="header">Medlemmar</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-documents-' . $id . ' lazy-loading" data-contentUrl="load_content.php?content=documents&groupId=' . $id . '"><div class="header">Dokument</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-pictures-' . $id . ' lazy-loading" data-contentUrl="load_content.php?content=pictures&groupId=' . $id . '"><div class="header">Bilder</div><div class="loader-target"></div></div>';
+		echo '<div class="slider-tab slider-videos-' . $id . ' lazy-loading" data-contentUrl="load_content.php?content=videos&groupId=' . $id . '"><div class="header">Filmer</div><div class="loader-target"></div></div>';
 		echo '</div></div>';
 	}
 ?>

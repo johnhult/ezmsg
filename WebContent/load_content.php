@@ -1,13 +1,14 @@
 <?php
 	header("Content-Type: text/html; charset=utf-8");
-	include('inc_ezmsg.php');
+	include('inc_userhandling.php');
+	if(!isset($uid)) {
+		die();
+	}
 	include('inc_output.php');
 	$content = $_GET['content'];
 	try {
 		if ($content == 'members') {
 			getMembersForGroup();
-		} else if ($content == 'messages') {
-			getMessagesForUser();
 		}
 	} catch (Exception $e) {
 		echo '<div class="error"><h4>Ett fel har uppstått:</h4><p>' . $e->getMessage() . '</p></div>';
@@ -21,15 +22,6 @@
 			}
 		} else {
 			throw new Exception('Anrop till hämta medlemmar i grupp var felaktigt');
-		}
-	}
-
-	function getMessagesForUser() {
-		$userId = $_GET ['userId'];
-		$uid = $_SESSION['uid'];
-		if (isset($userId)) {
-		} else {
-			throw new Exception('Anrop till hämta meddelanden var felaktigt');
 		}
 	}
 ?>

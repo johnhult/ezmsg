@@ -74,20 +74,14 @@ class EzMsg {
 		$result = array();
 		$con = Db::connect();
 
-		if (isset($groupId)) {
-			$sql = 'select p.id, concat(p.first_name, " ", p.last_name), p.color, p.picture from person p, group_person gp where gp.person_id = p.id and gp.group_id = ? order by first_name asc, last_name asc';
-		} else {
-			$sql = 'select id, concat(first_name, " ", last_name), color, picture from person order by first_name asc, last_name asc';
-		}
+		$sql = 'select m.from_person_id, m.message, m.time from message m where m.from_person_id in (?, ?) and m.to_person_id in (?, ?) order by time';
 		$stmt = $con->prepare($sql);
-		if (isset($groupId)) {
-			$stmt->bind_param("s", $groupId);
-		}
+		$stmt->bind_param('ssss', $fromUser, $toUser, $fromUser, $toUser);
 		$stmt->execute();
-		$stmt->bind_result($id, $name, $color, $picture);
+		$stmt->bind_result($from, $message, $time);
 		$stmt->store_result();
 		while ($stmt->fetch()) {
-			$result[] = array('id' => $id, 'name' => $name, 'color' => $color, 'picture' => $picture);
+			$result[] = array('from' => $from, 'message' => $message, 'time' => $time);
 		}
 		$stmt->close();
 		$con->close();

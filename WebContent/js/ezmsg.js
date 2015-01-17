@@ -29,7 +29,7 @@ $('.profile .clickTarget').click(function() {
 				finishTransformation($t, true);
 			});
 //			var colorClass = $t.attr("class").match(/color[\w-]*\b/);
-			loadMessages($t.append(messageArea).find('.message-area').show());
+			loadMessages($t.append(messageArea).find('.message-area').show(), $t.attr('data-id'), $t.find('h3').text());
 		} else {
 			$t.removeClass('maximized').animate({
 				'width' : $t.attr('data-orgwidth') + 'px',
@@ -118,23 +118,35 @@ function lazyLoad($container) {
 	$container.removeClass('lazy-loading');
 	var $target = $container.find('.loader-target').html(loader);
 	var contentUrl = $container.attr('data-contentUrl');
-	handleGet($target, contentUrl);
+	handleGet($target, contentUrl, function(data) {
+		$target.html(data);
+	});
 }
 
-function loadMessages($messageArea) {
+function loadMessages($messageArea, uid, name) {
 	
 	var $target = $messageArea.find('.messages');
-	var contentUrl = 'messages.php';
-	handleGet($target, contentUrl);
+	var contentUrl = 'load_messages.php?toUser=' + uid;
+	handleGet($target, contentUrl, function(data) {
+		var messages = $.parseJSON(data);
+		var html = "";
+		$.each(messages, function(index, message) {
+			if (message.from == uid) {
+				html += '<div><div class="text"><div class="name">' + name + '<span class="time">' + message.time + '</span></div>' + message.message + '</div><div class="them"><div class="round profile p-' + message.from + '"></div></div><br style="clear: both;" /></div>';
+			} else {
+				html += '<div><div class="me"><div class="round profile"></div></div><div class="text"><div class="name">Jag<span class="time">' + message.time + '</span></div>' + message.message + '</div><br style="clear: both;"/></div>';
+			}
+		});
+		$target.html(html);
+	});
 }
 
-function handleGet($target, contentUrl) {
+function handleGet($target, contentUrl, onOk) {
 	
 	$.get(contentUrl, function(data) {
-		  $target.html(data);
+		  onOk(data);
 	}).fail(function() {
-		$target.html(error);
-		$target.find('p').text('Gick inte att hämta data från ' + contentUrl);
+		$target.html(error).find('p').text('Gick inte att hämta data från ' + contentUrl);
 	});
 }
 

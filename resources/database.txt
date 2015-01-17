@@ -30,15 +30,12 @@
 - file_location
 - file_type
 
-* group_message
-- from_person_id (person.id)
-- to_group_id (group.id)
-- message
-
-* person_message
+* message
 - from_person_id (person.id)
 - to_person_id (person.id)
+- to_group_id (group.id)
 - message
+- time
 - read
 
  
